@@ -1,0 +1,11 @@
+{
+  "name": "ssam4152-tracker",
+  "version": "1.0.0",
+  "description": "Web App",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
