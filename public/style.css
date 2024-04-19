@@ -1,0 +1,80 @@
+.container {  display: grid;
+    grid-template-columns: 0.1fr 2.8fr 0.1fr;
+    grid-template-rows: 20px 500px 20px 100px 1.9fr 40px 20px;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+  }
+  
+  .typeCard { 
+    grid-area: 2 / 2 / 3 / 3; 
+    background-color: rgb(236, 174, 136);
+    border-radius: 40px;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    }
+
+  .typeCard .fa-share-nodes {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 30px; 
+    font-size: 2em;
+    color: rgb(155, 19, 19);
+    }
+  
+  .movieList { 
+    grid-area: 4 / 2 / 7 / 3; 
+    }
+  
+  .movieContainer{ 
+    grid-area: 5 / 2 / 6 / 3; 
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    }
+    
+  .movieContainer .card {
+    background-color: rgb(230, 191, 170);
+    height: 250px;
+    width: 180px;
+    border-radius: 10px;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-bottom: 25px;
+    }
+  
+  .listHead { 
+    grid-area: 4 / 2 / 5 / 3; 
+    position: relative;
+   
+    }
+
+  .listHead h3{ 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    }
+
+  .listHead .sort{ 
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    }
+
+   .listHead button{
+    margin: auto;
+    height: 20px;
+   } 
+  
+  .listBottom { 
+    grid-area: 6 / 2 / 7 / 3; 
+    text-align: center;
+    }
+  

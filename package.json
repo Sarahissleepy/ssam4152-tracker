@@ -4,6 +4,7 @@
   "description": "Web App",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "mocha"
   },
   "author": "",
@@ -12,3 +13,4 @@
     "express": "^4.19.2"
   }
 }
+
