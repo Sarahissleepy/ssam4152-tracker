@@ -6,6 +6,136 @@
     grid-auto-flow: row;
   }
   
+  /* styling for pop ups */
+
+  #addNew {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 20px;
+    z-index: 10;
+    padding: 50px;
+    min-width: 50%;
+    max-width: 80%;
+    display: none;
+   }
+
+  #addNew.show {
+    display: block;
+  }
+
+#closeBtn {
+  position: absolute;
+  top: 5px;
+  right: 15px; 
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  color: #757575;
+  padding: 5px;
+}
+
+#static {
+  float: left;
+  width: 25%;
+}
+
+.poster {
+  max-width: 100%; 
+  border-radius: 5px;
+  background-color: #757575;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#form {
+  float:right;
+  margin-top: 10%;
+  width: 70%;
+}
+
+#inputs input[type="text"],
+#inputs input[type="text"]:focus,
+#inputs textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.genInputs {
+    display: flex;
+    flex-direction: row;
+}
+
+.genre {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #dba934;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.genre:hover {
+    background-color: #b97829;
+}
+
+.stars {
+  display: flex;
+}
+.rating {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+.fa-star {
+  font-size: 24px;
+  color: #ccc;
+}
+.fa-star:hover {
+  color: #b97829;
+}
+
+#comment {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+  #overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0 , 0.5);
+    pointer-events: none;
+    z-index: 9;
+  }
+
+  #overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  } 
+
+    /* styling for base site */
+
   .typeCard { 
     grid-area: 2 / 2 / 3 / 3; 
     background-color: rgb(236, 174, 136);
