@@ -26,7 +26,26 @@
     display: block;
   }
 
-#closeBtn {
+  #database {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 20px;
+    z-index: 10;
+    padding: 50px;
+    min-width: 50%;
+    max-width: 80%;
+    display: none;
+   }
+
+  #database.show {
+    display: block;
+  }
+  
+
+#closeNewBtn {
   position: absolute;
   top: 5px;
   right: 15px; 
@@ -37,6 +56,19 @@
   color: #757575;
   padding: 5px;
 }
+
+#closeBtn {
+  position: absolute;
+  top: 5px;
+  right: 15px; 
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  color: #757575;
+  padding: 5px;
+  z-index: 10;
+} 
 
 #static {
   float: left;
@@ -90,23 +122,34 @@
     background-color: #b97829;
 }
 
+/* STAR RATING STYLING */
 .stars {
-  display: flex;
-}
-.rating {
   background: none;
   border: none;
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s ease;
 }
-.fa-star {
-  font-size: 24px;
-  color: #ccc;
-}
-.fa-star:hover {
-  color: #b97829;
-}
+   .rate i, .rate i:hover ~ i {
+    color: #222;
+    transition: color 200ms;
+    transition-delay: 0;
+  }
+  
+  .rate:hover i {
+    color: #fc0;
+    transition-delay: 30ms;
+  }
+  
+  /* Miscellaneous styles. */
+  .rate i {
+    cursor: pointer;
+    font-style: normal;
+  }
+
+  .rate i.active {
+    color: #ff9c1a;
+  }
 
 #comment {
     width: 100%;
@@ -138,8 +181,8 @@
 
   .typeCard { 
     grid-area: 2 / 2 / 3 / 3; 
-    background-color: rgb(236, 174, 136);
-    border-radius: 40px;
+    background-image: radial-gradient(circle, #addbe4 40%, #ffe0ee 100%);
+    border-radius: 5px;
     text-align: center;
     position: relative;
     padding: 20px;
@@ -154,6 +197,10 @@
     color: rgb(155, 19, 19);
     }
   
+  .content {
+    text-align: center;
+  }
+
   .movieList { 
     grid-area: 4 / 2 / 7 / 3; 
     }
@@ -165,16 +212,6 @@
     flex-wrap: wrap;
     flex-direction: row;
     align-items: flex-start;
-    }
-    
-  .movieContainer .card {
-    background-color: rgb(230, 191, 170);
-    height: 250px;
-    width: 180px;
-    border-radius: 10px;
-    flex-direction: column;
-    margin-left: 30px;
-    margin-bottom: 25px;
     }
   
   .listHead { 
@@ -202,9 +239,74 @@
     margin: auto;
     height: 20px;
    } 
+
+   .addButton {
+    background-color: rgb(255, 200, 200);
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    }
   
   .listBottom { 
     grid-area: 6 / 2 / 7 / 3; 
     text-align: center;
     }
   
+
+  #form-submissions {
+    padding: 20px;
+    width: 100%;
+  }
+
+.card {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.card-header {
+  display: flex;
+  align-items: center; /* Center aligns the image vertically */
+}
+
+.card-header img {
+  max-width: 150px; /* Adjust the maximum width of the image */
+  max-height: 200px; /* Adjust the maximum height of the image */
+  object-fit: cover; /* Scale the image to cover its container while preserving its aspect ratio */
+  border-radius: 8px; /* Optional: Add border radius for rounded corners */
+  margin: 20px;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: left;
+    width: 100%;
+}
+
+.form-info span {
+  display: block; /* Display each attribute on a new line */
+  color: #222;
+  font-size: medium;
+  text-transform: capitalize;
+}
+
+.delete-button {
+    background-color: #ff5555;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    float: right;
+}
+
+.delete-button:hover {
+    background-color: #ff0000;
+}

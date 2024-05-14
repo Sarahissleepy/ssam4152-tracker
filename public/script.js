@@ -1,18 +1,17 @@
 // add New Movie Pop Up trigger
-function togglePopup() {
+function toggleNewPopup() {
     var popup = document.getElementById("addNew");
     popup.classList.toggle("show");
     overlay.classList.toggle("active");
 }
 
-function removePopup() {
+function removeNewPopup() {
     var popup = document.getElementById("addNew");
     popup.classList.remove("show");
     overlay.classList.remove("active");
 }
 
-
-// auto fill
+// Auto fill
 const movieArray = [
   { name: 'interstellar', image: 'interstellar.jpg', director: 'Christopher Nolan', year: '2014' }, 
   { name: 'mean girls', image: 'meangirls.jpg', director: 'Mark Waters', year: '2004' }, 
@@ -42,78 +41,178 @@ titleInput.addEventListener('input', function() {
   }
 });
 
+// Star Rating
+const stars = document.querySelectorAll(".stars i");
+// Loop through the "stars" NodeList
+stars.forEach((star, index1) => {
+  // Add an event listener that runs a function when the "click" event is triggered
+  star.addEventListener("click", () => {
+    // Loop through the "stars" NodeList Again
+    stars.forEach((star, index2) => {
+      // Add the "active" class to the clicked star and any stars with a lower index
+      // and remove the "active" class from any stars with a higher index
+      index1 >= index2 ? star.classList.add("active") : star.classList.remove("active");
+    });
+  });
+});
 
-// ratings
-// const stars = document.querySelectorAll('.rating');
+//Storing form inputs
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('inputs');
 
-// stars.forEach(star => {
-//     star.addEventListener('click', (event) => {
-//       event.preventDefault(); // Prevent default form submission behavior
-//       const value = parseInt(star.getAttribute('data-value'));
-//       highlightStars(value);
-//     });
-//   });
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();// Prevent the default form submission
+    event.stopPropagation();
+    
+    // Retrieve form values
+    const posterSrc = document.getElementById('poster').getAttribute('src');
+    const movieTitle = document.getElementById('movie-title').value;
+    const director = document.getElementById('director').value;
+    const year = document.getElementById('year').value;
+    const genres = Array.from(document.querySelectorAll('.genres input[type="checkbox"]'))
+                          .filter(checkbox => checkbox.checked)
+                          .map(checkbox => checkbox.id);
+    const rating = document.querySelectorAll('.rate i.active').length;
+    const comment = document.getElementById('comment').value;
 
-// function highlightStars(value) {
-//   stars.forEach((star, index) => {
-//     if (index < value) {
-//       star.querySelector('i').classList.add('checked');
-//     } else {
-//       star.querySelector('i').classList.remove('checked');
-//     }
-//   });
-// }
+    // Create an object to hold the form data
+    const formData = {
+      poster: posterSrc,
+      movieTitle: movieTitle,
+      director: director,
+      year: year,
+      genres: genres,
+      rating: rating,
+      comment: comment
+    };
 
+    // Retrieve existing form submissions from localStorage
+    let formDataArray = JSON.parse(localStorage.getItem('formSubmissions')) || [];
 
-// // testing code
-// document.addEventListener('DOMContentLoaded', () => {
-//   const movieList = document.querySelector('.movieList');
-//   const movieForm = document.getElementById('inputs');
+    // Append the new form data to the array
+    formDataArray.push(formData);
 
-//   movieForm.addEventListener('submit', function(event) {
-//     event.preventDefault(); // Prevent form submission
+    // Store the updated form submissions array back to localStorage
+    localStorage.setItem('formSubmissions', JSON.stringify(formDataArray));
+
+    // Optionally, you can clear the form fields after submission
+    form.reset();
+
+      // Update the display to show all form submissions
+      displayAllFormSubmissions();
+    });
+
+    // Function to retrieve and display all form submissions
+    function displayAllFormSubmissions() {
+      const formDataArray = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+      const displayContainer = document.getElementById('form-submissions');
+      displayContainer.innerHTML = ''; // Clear previous submissions
   
-//     const movieTitle = document.getElementById('movie-title').value;
-//     const director = document.getElementById('director').value;
-//     const year = document.getElementById('year').value;
-//     const rating = document.querySelector('.stars .selected').length;
-//     const comment = document.getElementById('comment').value;
+      // Loop through each form submission and create HTML elements to display them
+      formDataArray.forEach(function(formData, index) {
+        const submissionCard = document.createElement('div');
+        submissionCard.classList.add('card');
   
-//     const movie = {
-//       title: movieTitle,
-//       director: director,
-//       year: year,
-//       rating: rating,
-//       comment: comment
-//     };
-  
-//     let movies = JSON.parse(localStorage.getItem('movies')) || [];
-//     movies.push(movie);
-//     localStorage.setItem('movies', JSON.stringify(movies));
-  
-//     // Add movie to the UI
-//     addMovieToUI(movie);
-//     // Reset form fields
-//     movieForm.reset();
-//   });
+        // Card Header
+        const cardHeader = document.createElement('div');
+        cardHeader.classList.add('card-header');
 
-//   function addMovieToUI(movie) {
-//     const card = document.createElement('div');
-//     card.classList.add('card');
+        // Create an image element
+        const posterImage = document.createElement('img');
+        posterImage.src = formData.poster; // Set the source attribute to the poster URL
+        posterImage.alt = "Movie Poster"; // Add an alt attribute for accessibility
+
+        // Append the image element to the card header
+        cardHeader.appendChild(posterImage);
+        submissionCard.appendChild(cardHeader);
   
-//     // Construct the inner HTML of the card using the movie information
-//     card.innerHTML = `
-//       <img src="img_avatar.png" alt="Avatar" style="width:100%">
-//       <div class="movie-details">
-//         <h4>${movie.title}</h4>
-//         <p>Director: ${movie.director}</p>
-//         <p>Year: ${movie.year}</p>
-//         <p>Rating: ${movie.rating}</p>
-//         <p>Comment: ${movie.comment}</p>
-//       </div>
-//     `;
+        // Card Body
+        const cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+        
+        // Display form data
+        const formInfo = document.createElement('div');
+        formInfo.classList.add('form-info');
+
+        Object.entries(formData).forEach(([fieldName, fieldValue]) => {
+          const fieldElement = document.createElement('div');
+          fieldElement.classList.add('form-info');
+      
+          const labelElement = document.createElement('span');
+          labelElement.textContent = `${fieldName}: `;
+          fieldElement.appendChild(labelElement);
+      
+          const valueElement = document.createElement('span');
+          if(fieldName === 'rating') {
+            valueElement.textContent = `${fieldValue} out of 5 stars`; // Append "out of 5 stars" to rating
+          } else {
+            valueElement.textContent = Array.isArray(fieldValue) ? fieldValue.join(',  ') : fieldValue;
+          }
+          fieldElement.appendChild(valueElement);
+      
+          // Customize styling based on each attribute
+          if (fieldName === 'poster') {
+              labelElement.style.display = 'none';
+              valueElement.style.display = 'none';
+          } else if (fieldName === 'movieTitle') {
+              labelElement.style.color = 'white';
+              labelElement.style.fontSize = '10px';
+              valueElement.style.fontWeight = 'bold';
+              valueElement.style.fontSize = 'x-large';
+          } else if (fieldName === 'director') {
+              labelElement.style.color = 'white';
+              labelElement.style.fontSize = '10px';
+              valueElement.style.fontStyle = 'italic';
+          }else if (fieldName === 'year'){
+              labelElement.style.display = 'none';
+              valueElement.style.fontStyle = 'italic'; 
+          }else if (fieldName === 'genres'){
+            labelElement.style.display = 'none';
+            valueElement.style.textAlign = 'center'; 
+            valueElement.style.padding = '8px';
+            valueElement.style.display = 'inline-block';
+            valueElement.style.marginTop = '5px';
+            valueElement.style.marginBottom = '5px';
+            valueElement.style.backgroundColor = '#FFEEC7';
+            valueElement.style.borderRadius = '5px'; 
+          }else if (fieldName === 'rating'){
+            labelElement.style.display = 'none';
+            valueElement.style.textTransform = 'lowercase';
+          } else if (fieldName === 'comment'){
+            labelElement.style.marginTop  = '10px';
+            valueElement.style.padding = '8px';
+            valueElement.style.width = '50%';
+            valueElement.style.marginTop = '5px';
+            valueElement.style.marginBottom = '5px';
+            valueElement.style.border = '1px solid #ccc'; 
+            valueElement.style.borderRadius = '5px'; 
+            valueElement.style.textTransform = 'initial';
+          }
+
+          cardBody.appendChild(fieldElement);
+      });
+        
+        // Add delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('delete-button');
+        deleteButton.addEventListener('click', function() {
+          // Remove form submission from localStorage
+          formDataArray.splice(index, 1);
+          localStorage.setItem('formSubmissions', JSON.stringify(formDataArray)); // Update localStorage
+          // Remove form submission from display
+          submissionCard.remove();
+          // Refresh the display
+          displayAllFormSubmissions();
+        });
+        cardBody.appendChild(deleteButton);
+        
+        submissionCard.appendChild(cardBody);
+
+        displayContainer.appendChild(submissionCard);
+      });
+    }
   
-//     // Append the card to the movie list container
-//     movieList.appendChild(card);
-//   }
-// });
+    // Call the function to display all form submissions when the page loads
+    displayAllFormSubmissions();
+});

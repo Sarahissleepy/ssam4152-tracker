@@ -15,10 +15,10 @@
   <div class="container">
     <!-- Pop up after clicking movie -->
     <div class="popUp" id="addNew">
-      <button id="closeBtn" onclick="removePopup()">&times;</button>
+      <button id="closeNewBtn" onclick="removeNewPopup()">&times;</button>
       <div id="static">
         <h3>Add a Movie</h3>
-          <img class="poster" src="Movies/empty.jpg" alt="empty">
+          <img class="poster" id="poster" src="Movies/empty.jpg" alt="empty">
       </div>
     <div id="form">
       <form id="inputs">
@@ -27,17 +27,34 @@
           <input type="text" id="director" placeholder="Insert Director's Name">
           <input type="text" id="year" placeholder="Insert Year of Release">
         </div>
-        <button class="genre">Comedy</button>
-        <button class="genre">Horror</button>
-        <button class="genre">Romance</button>
-        <button class="genre">Mystery</button>
-        <button class="genre">Action</button>
+        <div class="genres">
+          <label class="genreButton">Action
+            <input type="checkbox" id="Action">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="genreButton">Romance
+            <input type="checkbox" id="Romance">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="genreButton">Comedy
+            <input type="checkbox" id="Comedy">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="genreButton">Horror
+            <input type="checkbox" id="Horror">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="genreButton">Adventure
+            <input type="checkbox" id="Adventure">
+            <span class="checkmark"></span>
+          </label>
+        </div>
         <div class="stars">
-          <button class="rating"><i id="1-star" class="fa-regular fa-star"></i></button>
-          <button class="rating"><i id="2-star" class="fa-regular fa-star"></i></button>
-          <button class="rating"><i id="3-star" class="fa-regular fa-star"></i></button>
-          <button class="rating"><i id="4-star" class="fa-regular fa-star"></i></button>
-          <button class="rating"><i id="5-star" class="fa-regular fa-star"></i></button>
+          <span class="rate"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>
         </div>
         <input type="text" id="comment" name="comment" placeholder="Write a comment here (optional)">
         <button type="submit">Submit</button>
@@ -49,15 +66,14 @@
     <div class="typeCard">
       <i class="fa-solid fa-share-nodes"></i>
       <div class="content">
-        <h1>MBTI</h1>
-        <h2>Movie Buff's Type Indicator</h2>
-        <img src="example.jpg" alt="Example" width="500" height="600">
-        <h3>Insert Taste Type</h3>
-        <p>Insert Description</p>
+        <h1 id="type-title">Welcome to Movie Buff's Type Indicator</h1>
+        <img id="type-image" src="example.jpg" alt="Example" width="500" height="600">
+        <h3 id="type-description">Keep adding movies that you've seen, rate them and add a comment. You're movie taste type will be revealed as you go. Have fun!</h3>
       </div>
     </div>
     <div class="movieList"></div>
     <div class="listHead">
+      <div class="addButton" onclick="toggleNewPopup()" type="button">Add a Movie</div>
       <h3>Your List:</h3>
       <div class="sort">
         <p>Sort By:</p>
@@ -66,8 +82,10 @@
     </div>
     <div class="movieContainer">
 <!-- movie card added to list -->      
-      <div class="card" onclick="togglePopup()">
-      </div>
+      <!-- <div class="card" onclick="togglePopup()">
+      </div> -->
+      <div id="form-submissions"></div>
+
     </div>
     <div class="listBottom">
       <button type="button">See More</button>
