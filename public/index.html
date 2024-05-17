@@ -31,30 +31,16 @@
           <input type="text" id="year" placeholder="Insert Year of Release">
         </div>
         <div class="genres">
-          <label class="genreButton">Action
-            <input type="checkbox" id="Action" autocomplete="off">
-            <span class="checkmark"></span>
-          </label>
-          
-          <label class="genreButton">Romance
-            <input type="checkbox" id="Romance" autocomplete="off">
-            <span class="checkmark"></span>
-          </label>
-          
-          <label class="genreButton">Comedy
-            <input type="checkbox" id="Comedy" autocomplete="off">
-            <span class="checkmark"></span>
-          </label>
-          
-          <label class="genreButton">Horror
-            <input type="checkbox" id="Horror" autocomplete="off">
-            <span class="checkmark"></span>
-          </label>
-
-          <label class="genreButton">Adventure
-            <input type="checkbox" id="Adventure" autocomplete="off">
-            <span class="checkmark"></span>
-          </label>
+          <input id="Action" type="checkbox">
+          <label class="genreButton" for="Action">Action</label>
+          <input id="Romance" type="checkbox">
+          <label class="genreButton" for="Romance">Romance</label>
+          <input id="Comedy" type="checkbox">
+          <label class="genreButton" for="Comedy">Comedy</label>
+          <input id="Horror" type="checkbox">
+          <label class="genreButton" for="Horror">Horror</label>
+          <input id="Adventure" type="checkbox">
+          <label class="genreButton" for="Adventure">Adventure</label>
         </div>
         <div class="stars">
           <span class="rate"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>
@@ -82,9 +68,6 @@
       <h3>Your List:</h3>
       <div class="sort">
         <p>Sort By:</p>
-        <!-- <button id="sort-rating" type="button">Ratings</button>
-        <button id="sort-rating" type="button">Ratings</button>
-        <button id="sort-rating" type="button">Ratings</button> -->
         <input type="radio" id="sort-alphabet" name="radio-group">
         <label for="sort-alphabet">A to Z</label>
         
@@ -97,9 +80,10 @@
     </div>
     <div class="movieContainer">
 <!-- movie card added to list -->      
-
       <div id="form-submissions"></div>
-
+    </div>
+    <div class="listBottom">
+      <button type="button">See More</button>
     </div>
 
   <script src="script.js"></script>

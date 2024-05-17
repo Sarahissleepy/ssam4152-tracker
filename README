@@ -3,6 +3,11 @@ Welcome to my tracker website!!
 To use my website, I implemented an array of set movies that can be used to test the tracker.
 In future, I hope to intergrate an API such as IMDB or othe movie databases, to expand the range of movies and availability for users.
 
+To toggle the type card to appear, add in movies and specify the genres. 
+After adding a few in the code will read what genre you most commonly watch and determine a type card for you.
+Refresh the page to update this after adding movies.
+Ideally in future I would like to add more conditionals to create more nuanced movie personality types.
+
 * MOVIE ARRAY *
 
 * ADD NEW MOVIE POP UP *
@@ -11,3 +16,6 @@ In future, I hope to intergrate an API such as IMDB or othe movie databases, to 
 
 * STAR RATING *
 https://codepen.io/blixt/pen/QyNXEp
+
+* CHECK MARK AND RADIO BUTTONS *
+https://codepen.io/jmar/pen/jWWKbb

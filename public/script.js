@@ -130,7 +130,7 @@ formDataArray.forEach(function(formData, index) {
       valueElement.style.display = 'inline-block';
       valueElement.style.marginTop = '5px';
       valueElement.style.marginBottom = '5px';
-      valueElement.style.backgroundColor = '#FFEEC7';
+      valueElement.style.backgroundColor = '#d9e6f4';
       valueElement.style.borderRadius = '5px'; 
     } else if (fieldName === 'rating'){
       labelElement.style.display = 'none';
@@ -222,6 +222,8 @@ form.addEventListener('submit', function(event) {
   displayAllFormSubmissions(formDataArray);
 });
 
+// SORTING THE ARRAY CODE
+
 // Select the "Sort by Title" button
 const sortTitleButton = document.getElementById('sort-alphabet');
 
@@ -253,3 +255,154 @@ formDataArray.sort((a, b) => {
 // Return the sorted array
 return formDataArray;
 }
+
+// Select the "Sort by Rating" button
+const sortRatingButton = document.getElementById('sort-rating');
+
+// Add event listener to the button
+sortRatingButton.addEventListener('click', function() {
+  // Retrieve form submissions from localStorage
+  let formDataArray = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+  // Reorder formDataArray by rating from highest to lowest
+  formDataArray = reorderByRating(formDataArray);
+  // Refresh the display
+  displayAllFormSubmissions(formDataArray);
+});
+
+// Call the function to display all form submissions when the page loads
+let formDataArray = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+displayAllFormSubmissions(formDataArray);
+
+// Function to reorder form submissions by rating from highest to lowest
+function reorderByRating(formDataArray) {
+  // Sort the formDataArray based on rating from highest to lowest
+  formDataArray.sort((a, b) => b.rating - a.rating);
+  // Return the sorted array
+  return formDataArray;
+}
+
+// Select the "Sort by Most Recent" button
+const sortRecentButton = document.getElementById('sort-recent');
+
+// Add event listener to the button
+sortRecentButton.addEventListener('click', function() {
+  // Retrieve form submissions from localStorage
+  let formDataArray = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+  // Reorder formDataArray by most recently added
+  formDataArray = reorderByMostRecent(formDataArray);
+  // Refresh the display
+  displayAllFormSubmissions(formDataArray);
+});
+
+// Call the function to display all form submissions when the page loads
+formDataArray = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+displayAllFormSubmissions(formDataArray);
+
+// Function to reorder form submissions by most recently added
+function reorderByMostRecent(formDataArray) {
+  // Sort the formDataArray based on index, assuming the higher index is more recent
+  formDataArray.sort((a, b) => b.index - a.index);
+  // Return the sorted array
+  return formDataArray;
+}
+
+
+// Function to calculate the most common genre in formDataArray
+function mostCommonGenre(formDataArray) {
+  let genreCount = {}; // Object to store the count of each genre
+  // Loop through each form submission
+  formDataArray.forEach(formData => {
+      // Loop through each genre in the submission
+      formData.genres.forEach(genre => {
+          // Increment the count of the genre in genreCount object
+          genreCount[genre] = (genreCount[genre] || 0) + 1;
+      });
+  });
+  // Find the genre with the maximum count
+  let mostCommonGenre = null;
+  let maxCount = 0;
+  Object.entries(genreCount).forEach(([genre, count]) => {
+      if (count > maxCount) {
+          mostCommonGenre = genre;
+          maxCount = count;
+      }
+  });
+  return mostCommonGenre;
+}
+
+
+// Function to update content based on the most common genre
+function updateContent(formDataArray) {
+  const contentDiv = document.querySelector('.content');
+  const mostCommon = mostCommonGenre(formDataArray);
+  if (mostCommon) {
+      // Update content based on the most common genre
+      switch (mostCommon) {
+          case 'Action':
+              contentDiv.innerHTML = `
+                  <h1 id="type-title">Welcome to Action Movie Buff's Type Indicator</h1>
+                  <img id="type-image" src="action.jpg" alt="Action" width="500" height="600">
+                  <h3 id="type-description">Enjoy adrenaline-pumping action flicks? Dive into the world of high-octane entertainment!</h3>
+              `;
+              break;
+          case 'Romance':
+              contentDiv.innerHTML = `
+                  <h1 id="type-title">Welcome to Comedy Movie Buff's Type Indicator</h1>
+                  <img id="type-image" src="comedy.jpg" alt="Comedy" width="500" height="600">
+                  <h3 id="type-description">In for a good laugh? Explore the humorous side of cinema with our comedy selections!</h3>
+              `;
+              break;
+          case 'Comedy':
+            contentDiv.innerHTML = `
+                <h1 id="type-title">Welcome to Romance Movie Buff's Type Indicator</h1>
+                <img id="type-image" src="comedy.jpg" alt="Comedy" width="500" height="600">
+                <h3 id="type-description">In for a good laugh? Explore the humorous side of cinema with our comedy selections!</h3>
+            `;
+              break;
+          case 'Horror':
+            contentDiv.innerHTML = `
+                <h1 id="type-title">Welcome to Romance Movie Buff's Type Indicator</h1>
+                <img id="type-image" src="comedy.jpg" alt="Comedy" width="500" height="600">
+                <h3 id="type-description">In for a good laugh? Explore the humorous side of cinema with our comedy selections!</h3>
+            `;
+              break;
+          case 'Adventure':
+            contentDiv.innerHTML = `
+                <h1 id="type-title">Welcome to Romance Movie Buff's Type Indicator</h1>
+                <img id="type-image" src="comedy.jpg" alt="Comedy" width="500" height="600">
+                <h3 id="type-description">In for a good laugh? Explore the humorous side of cinema with our comedy selections!</h3>
+            `;
+              break;        
+          // Add more cases for other genres as needed
+          default:
+              // If the most common genre doesn't match any specific case, show a generic message
+              contentDiv.innerHTML = `
+                  <h1 id="type-title">Welcome to Movie Buff's Type Indicator</h1>
+                  <img id="type-image" src="example.jpg" alt="Example" width="500" height="600">
+                  <h3 id="type-description">Keep adding movies that you've seen, rate them and add a comment. You're movie taste type will be revealed as you go. Have fun!</h3>
+              `;
+              break;
+      }
+  } else {
+      // If no genre information is available, show a generic message
+      contentDiv.innerHTML = `
+          <h1 id="type-title">Welcome to Movie Buff's Type Indicator</h1>
+          <img id="type-image" src="example.jpg" alt="Example" width="500" height="600">
+          <h3 id="type-description">Keep adding movies that you've seen, rate them and add a comment. You're movie taste type will be revealed as you go. Have fun!</h3>
+      `;
+  }
+}
+
+// Call updateContent function when the page loads and whenever form submissions change
+document.addEventListener('DOMContentLoaded', function() {
+  let formDataArray = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+  updateContent(formDataArray);
+
+  // Add event listener for changes in form submissions
+  window.addEventListener('storage', function(e) {
+      if (e.key === 'formSubmissions') {
+          formDataArray = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+          updateContent(formDataArray);
+      }
+  });
+});
