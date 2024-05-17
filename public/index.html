@@ -8,6 +8,9 @@
   <link rel="icon" href="favicon.png">
   <script src="https://kit.fontawesome.com/ba86a929b6.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -29,27 +32,27 @@
         </div>
         <div class="genres">
           <label class="genreButton">Action
-            <input type="checkbox" id="Action">
+            <input type="checkbox" id="Action" autocomplete="off">
             <span class="checkmark"></span>
           </label>
           
           <label class="genreButton">Romance
-            <input type="checkbox" id="Romance">
+            <input type="checkbox" id="Romance" autocomplete="off">
             <span class="checkmark"></span>
           </label>
           
           <label class="genreButton">Comedy
-            <input type="checkbox" id="Comedy">
+            <input type="checkbox" id="Comedy" autocomplete="off">
             <span class="checkmark"></span>
           </label>
           
           <label class="genreButton">Horror
-            <input type="checkbox" id="Horror">
+            <input type="checkbox" id="Horror" autocomplete="off">
             <span class="checkmark"></span>
           </label>
 
           <label class="genreButton">Adventure
-            <input type="checkbox" id="Adventure">
+            <input type="checkbox" id="Adventure" autocomplete="off">
             <span class="checkmark"></span>
           </label>
         </div>
@@ -64,12 +67,14 @@
     </div>
   <div id="overlay"></div>
     <div class="typeCard">
+      <div class="border">
       <i class="fa-solid fa-share-nodes"></i>
       <div class="content">
         <h1 id="type-title">Welcome to Movie Buff's Type Indicator</h1>
         <img id="type-image" src="example.jpg" alt="Example" width="500" height="600">
         <h3 id="type-description">Keep adding movies that you've seen, rate them and add a comment. You're movie taste type will be revealed as you go. Have fun!</h3>
       </div>
+     </div>
     </div>
     <div class="movieList"></div>
     <div class="listHead">
@@ -77,21 +82,25 @@
       <h3>Your List:</h3>
       <div class="sort">
         <p>Sort By:</p>
-        <button type="button">Ratings</button>
+        <!-- <button id="sort-rating" type="button">Ratings</button>
+        <button id="sort-rating" type="button">Ratings</button>
+        <button id="sort-rating" type="button">Ratings</button> -->
+        <input type="radio" id="sort-alphabet" name="radio-group">
+        <label for="sort-alphabet">A to Z</label>
+        
+        <input type="radio" id="sort-recent" name="radio-group" checked="checked">
+        <label for="sort-recent">Most recent</label>
+        
+        <input type="radio" id="sort-rating" name="radio-group">
+        <label for="sort-rating">Highest Rating</label>
       </div>
     </div>
     <div class="movieContainer">
 <!-- movie card added to list -->      
-      <!-- <div class="card" onclick="togglePopup()">
-      </div> -->
+
       <div id="form-submissions"></div>
 
     </div>
-    <div class="listBottom">
-      <button type="button">See More</button>
-    </div>
-  </div>
-
 
   <script src="script.js"></script>
 </body>

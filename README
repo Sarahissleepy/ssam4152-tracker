@@ -1,0 +1,13 @@
+Welcome to my tracker website!!
+
+To use my website, I implemented an array of set movies that can be used to test the tracker.
+In future, I hope to intergrate an API such as IMDB or othe movie databases, to expand the range of movies and availability for users.
+
+* MOVIE ARRAY *
+
+* ADD NEW MOVIE POP UP *
+
+* LOCAL MOVIE DATABASE *
+
+* STAR RATING *
+https://codepen.io/blixt/pen/QyNXEp
