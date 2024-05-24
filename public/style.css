@@ -4,51 +4,32 @@ body {
 }
 
 .container {  display: grid;
-    grid-template-columns: 0.1fr 2.8fr 0.1fr;
-    grid-template-rows: 20px 500px 20px 100px 1.9fr 40px 20px;
-    grid-auto-columns: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-  }
+  grid-template-columns: 0.1fr 2.8fr 0.1fr;
+  grid-template-rows: 20px 500px 20px 100px 1.9fr 40px 20px;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+}
   
   /* styling for pop ups */
 
-  #addNew {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 20px;
-    z-index: 10;
-    padding: 50px;
-    min-width: 50%;
-    max-width: 80%;
-    display: none;
-   }
+#addNew {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 20px;
+  z-index: 10;
+  padding: 50px;
+  min-width: 50%;
+  max-width: 80%;
+  display: none;
+}
 
-  #addNew.show {
-    display: block;
-  }
-
-  #database {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 20px;
-    z-index: 10;
-    padding: 50px;
-    min-width: 50%;
-    max-width: 80%;
-    display: none;
-   }
-
-  #database.show {
-    display: block;
-  }
-  
+#addNew.show {
+  display: block;
+} 
 
 #closeNewBtn {
   position: absolute;
@@ -61,19 +42,6 @@ body {
   color: #757575;
   padding: 5px;
 }
-
-#closeBtn {
-  position: absolute;
-  top: 5px;
-  right: 15px; 
-  background: none;
-  border: none;
-  font-size: 40px;
-  cursor: pointer;
-  color: #757575;
-  padding: 5px;
-  z-index: 10;
-} 
 
 #static {
   float: left;
@@ -176,122 +144,142 @@ body {
   border: 1px solid #7aa1cb;
 }
 
-  #overlay {
-    position: fixed;
-    opacity: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgb(0, 0, 0 , 0.5);
-    pointer-events: none;
-    z-index: 9;
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 0, 0 , 0.5);
+  pointer-events: none;
+  z-index: 9;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+} 
+
+/* styling for type card section */
+
+.typeCard { 
+  grid-area: 2 / 2 / 3 / 3; 
+  background-image: linear-gradient( #C4EEFC 20%, #ffe8f3 100%);
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  padding: 30px;
+  height: fit-content;
+  box-sizing: border-box;    
+}
+
+.typeCard .fa-share-nodes {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 30px; 
+  font-size: 2em;
+  color: rgb(155, 19, 19);
+  cursor: pointer;
   }
 
-  #overlay.active {
-    opacity: 1;
-    pointer-events: all;
-  } 
+#type-image {
+  width: 20%;
+  height: 20%;
+  border-radius: 20px;
+}
 
-    /* styling for base site */
+.border {
+  padding: 0px;
+  position: relative;
+  border: 4px solid white;
+  border-radius: 40px;
+  height: 100%;
+  box-sizing: border-box;
+}
 
-  .typeCard { 
-    grid-area: 2 / 2 / 3 / 3; 
-    background-image: linear-gradient( #C4EEFC 20%, #ffe8f3 100%);
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
-    padding: 30px;
-    box-sizing: border-box;    
+.content {
+  text-align: center;
+  margin: 0%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#type-description {
+  font-weight: normal;
+  font-size: 100%;
+  width: 60%;
+}
+
+/* List Styling */
+
+.movieList { 
+  grid-area: 4 / 2 / 7 / 3; 
   }
 
-  .typeCard .fa-share-nodes {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 30px; 
-    font-size: 2em;
-    color: rgb(155, 19, 19);
-    cursor: pointer;
-    }
-  
-  .border {
-    padding: 0px;
-    position: relative;
-    border: 4px solid white;
-    border-radius: 40px;
-    height: 100%;
-    box-sizing: border-box;
-  }
-  
-  .content {
-    text-align: center;
-    margin: 5%;
+.movieContainer{ 
+  grid-area: 5 / 2 / 6 / 3; 
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
   }
 
-  .movieList { 
-    grid-area: 4 / 2 / 7 / 3; 
-    }
-  
-  .movieContainer{ 
-    grid-area: 5 / 2 / 6 / 3; 
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: flex-start;
-    }
-  
-  .listHead { 
-    grid-area: 4 / 2 / 5 / 3; 
-    position: relative;
-    }
+.listHead { 
+  grid-area: 4 / 2 / 5 / 3; 
+  position: relative;
+  margin-top: 20px;
+  }
 
-  .listHead h3{ 
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: normal;
-    font-size: x-large;
-    margin: auto;
-    }
+.listHead h3{ 
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: normal;
+  font-size: x-large;
+  margin: auto;
+  }
 
-  .listHead .sort{ 
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    }
+.listHead .sort{ 
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  }
 
-   /* Hide the default radio buttons */
+/* Hide the default radio buttons */
 input[type="radio"] {
   display: none;
 }
 
-  /* Style for the radio buttons */
-  .sort label {
-    display: inline-block;
-    cursor: pointer;
-    padding: 5px;
-    text-align: center;
-    margin-right: 5px;
-    margin-left: 10px;
-    margin-top: 2%;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    height: 20px;
-  }
+/* Style for the radio buttons */
+.sort label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px;
+  text-align: center;
+  margin-right: 5px;
+  margin-left: 10px;
+  margin-top: 2%;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 20px;
+}
 
-  /* Style for the selected radio button */
-  .sort input[type="radio"]:checked + label {
-    background-color: #a7d2ff;
-    color: #22568d;
-    border: 2px solid #7aa1cb;
-  }
+/* Style for the selected radio button */
+.sort input[type="radio"]:checked + label {
+  background-color: #a7d2ff;
+  color: #22568d;
+  border: 2px solid #7aa1cb;
+}
 
 .addButton {
 background-color: rgb(255, 182, 182);
@@ -308,22 +296,24 @@ flex-direction: row;
 margin: auto;
 }
 
-  #form-submissions {
-    padding: 0px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
+/* Styling for the movie cards on list */
+
+#form-submissions {
+  padding: 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
 .card {
   display: flex;
-  border: 2px solid #f5eaf4;
+  border: 2px solid #eaf0f5;
   border-radius: 8px;
   margin-bottom: 20px;
   width: 48%;
-  box-shadow: 5px 5px 5px #f5eaf4;
+  box-shadow: 5px 5px 5px #eaf0f5;
   background-color: white;
 }
 
@@ -341,9 +331,15 @@ margin: auto;
 }
 
 .card-body {
-    padding: 10px;
-    text-align: left;
-    width: 100%;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.miniStars {
+  width: 110px;
+  height: auto;
+  margin-top: 5px;
 }
 
 .form-info span {
@@ -354,15 +350,226 @@ margin: auto;
 }
 
 .delete-button {
-    background-color: #ff5555;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 12px;
-    cursor: pointer;
-    float: right;
+  background-color: #ff5555;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  float: right;
 }
 
 .delete-button:hover {
-    background-color: #ff0000;
+  background-color: #ff0000;
 }
+
+/* Styling for bottom of site */
+.listBottom { 
+  grid-area: 7 / 1 / 8 / 4; 
+  text-align: center;
+  background-color: #C4EEFC;
+  color: #68beda;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  content: "";
+  display: table;
+  clear: both;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  @media (max-width: 600px) {
+    
+    .container {
+      display: grid; 
+      grid-auto-columns: 1fr; 
+      grid-template-columns: 1fr; 
+      grid-template-rows: 680px 200px 1.8fr 50px; 
+      gap: 0px 0px; 
+    }
+
+    .listHead { grid-area: 2 / 1 / 3 / 2; }
+    .movieContainer { grid-area: 3 / 1 / 4 / 2; }
+    .listBottom { grid-area: 4 / 1 / 5 / 2; }
+    .movieList { grid-area: 2 / 1 / 5 / 2; }
+
+    .addButton {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  
+    .typeCard { 
+      grid-area: 1 / 1 / 2 / 2; 
+      border-radius: 5px;
+      text-align: center;
+      padding: 10px;
+    }
+    
+    .typeCard .fa-share-nodes {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 10px; 
+      font-size: 2em;
+      }
+    
+    #type-image {
+      width: 80%;
+      height: 80%;
+      border-radius: 40px;
+    }
+    
+    #type-description {
+      width: 100%;
+    }
+
+    .border {
+      padding: 0px;
+      border-radius: 20px;
+    }
+    
+    .content {
+      text-align: center;
+      margin: 10%;
+    }
+
+    .listHead { 
+      position: relative;
+      margin: 0;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      }
+    
+    .listHead h3{ 
+      position: relative;
+      top: 0%;
+      left: 0%;
+      transform: none;
+      font-weight: bold;
+      text-align: center;
+      align-self: center;
+      font-size: x-large;
+      margin: 20px 0 10px 0;
+      }
+  
+    .listHead .sort{ 
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 90%; /* Ensure it takes the full width */
+      margin: 10px 0 0 0;
+      font-size: small;
+      }
+
+    .listHead .addButton {
+      background-color: rgb(255, 182, 182);
+      border: 2px solid #d69797;
+      color: #7e3232;
+      border-radius: 10px;
+      padding: 10px 100px 10px 100px;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-self: center;
+      margin: 0;
+      }
+    
+    /* Hide the default radio buttons */
+    input[type="radio"] {
+      display: none;
+    }
+    
+    /* Style for the radio buttons */
+    .sort label {
+      display: inline-block;
+      cursor: pointer;
+      margin: 5px 0px 0px 0px;
+      padding: 5px 10px;
+      text-align: center;
+      margin-right: 5px;
+      margin-left: 10px;
+      margin-top: 2%;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      height: 15px;
+    }
+    
+    /* Style for the selected radio button */
+    .sort input[type="radio"]:checked + label {
+      background-color: #a7d2ff;
+      color: #22568d;
+      border: 2px solid #7aa1cb;
+    }
+  
+
+
+
+
+
+
+    .card {
+      width: 100%;
+      max-width: 100%;
+    }
+
+
+/* styling for pop ups */
+
+#addNew {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5px;
+  z-index: 10;
+  padding: 30px;
+  max-height: 90%;
+  min-width: 80%;
+  max-width: 80%;
+  display: none;
+}
+
+#addNew.show {
+  display: block;
+} 
+
+#static {
+  float: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poster {
+  max-width: 40%; 
+  border-radius: 5px;
+  background-color: #757575;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#form {
+  margin-top: 5%;
+  width: 100%;
+}
+
+  }

@@ -4,18 +4,68 @@ To use my website, I implemented an array of set movies that can be used to test
 In future, I hope to intergrate an API such as IMDB or othe movie databases, to expand the range of movies and availability for users.
 
 To toggle the type card to appear, add in movies and specify the genres. 
-After adding a few in the code will read what genre you most commonly watch and determine a type card for you.
+After adding a few in, the code will read what genre you most commonly watch and determine a type card for you.
 Refresh the page to update this after adding movies.
 Ideally in future I would like to add more conditionals to create more nuanced movie personality types.
 
+I designed for Desktop first, as I intend the database to be used following having watched a new movie, with intent to log it in. It is also more common users utilise desktop as their primary movie watching experience due to the large screen size, internet connectivity and overall health benefits related to ergonmics and long term screen usage. (https://www.statista.com/statistics/784383/online-video-devices-in-the-us/#:~:text=Computers%20ranked%20second%20with%20roughly,smartphones%20to%20watch%20online%20videos.)
+
+The secondary mobile layout is designed for the Iphone 14 pro max.
+
 * MOVIE ARRAY *
+Movies to test website:
+- Jurassic Park
+- Avengers
+- Tangled
+- Spirited Away
+- Forrest Gump
+- Anastasia
+- Die Hard
+- Mean Girls
+- Princess Diaries
+- Interstellar
+- Howls Moving Castle
 
 * ADD NEW MOVIE POP UP *
+I designed this pop up that will call the toggleNewPopup() when clicked and call removeNewPopup() when the close button is clicked.
+I made the pop up in CSS by scratch in order to accommodate the form functions I wanted in the format I desired. In here I put in my user inputs, where when the user writes a movie that is from the list, it will fill in the director, year, and poster associated with the film.
 
-* LOCAL MOVIE DATABASE *
+From there users can input the genres they believe the movie best fit under, a score based on theor enjoyment of the movie, and a comment on the movie.
+
+Once this is submitted, it is saved into local storage under formDataArray.
 
 * STAR RATING *
+I used this source to help me start up the star rating interactive animation, then contributed my own code to make the rating clickable and for it to hold the color once clicked.
 https://codepen.io/blixt/pen/QyNXEp
 
 * CHECK MARK AND RADIO BUTTONS *
+Similarly I applied some code from this source to style my radio and checkmark buttons more nicely.
 https://codepen.io/jmar/pen/jWWKbb
+
+* LOCAL MOVIE DATABASE *
+By saving the form submissions as an object in the array, I could reorder, display, and remove form submissions as I pleased without them interfering with one another.
+In the object, the user inputs were split off as different attributes, such as title and image, in order to make it easier to pull out the object entries to display on the website.
+
+* MOVIE SUBMISSION CARDS *
+This part was tricky, I had to create card elements from something that didnt initially exist, though needed to exist after an entry is submitted. I found a source online (https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) that went through creating elements in Javascript within functions, etc. I looped through each submission and created divs and text elements to build off css in order to make the cards shown on the page.
+
+In order to add css styling to each attribute in the object, I made an if statement that went through each attribute by name. 
+
+* SORTING THE ARRAY *
+I created 3 different options for Sorting the database content.
+
+1. A to Z
+In order to make it easier for the user to navigate a specific movie in the database, providing an alphabetical sorting option made sense.
+2. Most recent
+To view the database based on when content was last submitted. This can be applied in situations where the user has made a mistake and wants to delete their last entry or when the user wants to view.
+3. Highest Rating
+This could be applied for users viewing their friend's and family's lists. In sharing their movie interests, knowing their most enjoyed movies is ideal in understanding their taste profile.
+
+
+* DETERMINING TYPE CARD BASED ON PRIMARY GENRE WATCHED *
+
+
+* TYPE CARD ILLUSTRATIONS AND DESCRIPTIONS *
+
+
+* RESPONSIVE TO MOBILE *

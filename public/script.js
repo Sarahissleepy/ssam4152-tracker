@@ -19,7 +19,13 @@ const movieArray = [
 { name: 'mean girls', image: 'meangirls.jpg', director: 'Mark Waters', year: '2004' }, 
 { name: 'princess diaries', image: 'princess.jpg', director: 'Garry Marshall', year: '2001' },
 { name: 'tangled', image: 'tangled.jpg', director: 'Nathan Greno', year: '2010' },
-{ name: 'howls moving castle', image: 'howlsmoving.jpg', director: 'Hayao Miyazaki', year: '2004' }
+{ name: 'howls moving castle', image: 'howlsmoving.jpg', director: 'Hayao Miyazaki', year: '2004' },
+{ name: 'die hard', image: 'diehard.jpg', director: 'John McTiernan', year: '1988' },
+{ name: 'avengers', image: 'avengers.jpg', director: 'Anthony Russo', year: '2019' },
+{ name: 'jurassic park', image: 'jurassic.jpg', director: 'Steven Spielberg', year: '1993' },
+{ name: 'anastasia', image: 'anastasia.jpg', director: 'Don Bluth', year: '1997' },
+{ name: 'forrest gump', image: 'forrest.jpg', director: 'Robert Zemeckis', year: '1994' },
+{ name: 'spirited away', image: 'spirited.jpg', director: 'Hayao Miyazaki', year: '2001' }
 ];
 
 // these are the attributes of the movie objects in the array put into const so it can be dynamic
@@ -31,7 +37,9 @@ const posterImage = document.querySelector('.poster');
 // When the title is written in the input, this function will fill in the associated values
 titleInput.addEventListener('input', function() {
 const inputValue = this.value.toLowerCase();
+console.log('User input:', inputValue); // Debug input value
 const movie = movieArray.find(movie => movie.name.toLowerCase() === inputValue);
+console.log('Found movie:', movie); // Debug found movie
 if (movie) {
   directorInput.value = movie.director;
   yearInput.value = movie.year;
@@ -99,9 +107,21 @@ formDataArray.forEach(function(formData, index) {
     labelElement.textContent = `${fieldName}: `;
     fieldElement.appendChild(labelElement);
 
+    // const valueElement = document.createElement('span');
+    // if(fieldName === 'rating') {
+    //   valueElement.textContent = `${fieldValue} out of 5 stars`; // Append "out of 5 stars" to rating
+    // } else {
+    //   valueElement.textContent = Array.isArray(fieldValue) ? fieldValue.join(',  ') : fieldValue;
+    // }
+    // fieldElement.appendChild(valueElement);
+
     const valueElement = document.createElement('span');
     if(fieldName === 'rating') {
-      valueElement.textContent = `${fieldValue} out of 5 stars`; // Append "out of 5 stars" to rating
+      const ratingImage = document.createElement('img');
+      ratingImage.src = `Stars/${fieldValue}.png`; // Set the source to the corresponding rating image
+      ratingImage.alt = `${fieldValue} out of 5 stars`; // Set the alt text for accessibility
+      ratingImage.classList.add("miniStars");
+      valueElement.appendChild(ratingImage); // Append the image to the span
     } else {
       valueElement.textContent = Array.isArray(fieldValue) ? fieldValue.join(',  ') : fieldValue;
     }
@@ -117,12 +137,13 @@ formDataArray.forEach(function(formData, index) {
         valueElement.style.fontWeight = 'bold';
         valueElement.style.fontSize = 'x-large';
     } else if (fieldName === 'director') {
-        labelElement.style.color = 'white';
-        labelElement.style.fontSize = '10px';
+        valueElement.style.marginTop = '5px';
+        labelElement.style.display = 'none';
         valueElement.style.fontStyle = 'italic';
     } else if (fieldName === 'year'){
         labelElement.style.display = 'none';
         valueElement.style.fontStyle = 'italic'; 
+        valueElement.style.marginBottom = '10px'; 
     } else if (fieldName === 'genres'){
       labelElement.style.display = 'none';
       valueElement.style.textAlign = 'center'; 
@@ -134,7 +155,6 @@ formDataArray.forEach(function(formData, index) {
       valueElement.style.borderRadius = '5px'; 
     } else if (fieldName === 'rating'){
       labelElement.style.display = 'none';
-      valueElement.style.textTransform = 'lowercase';
     } else if (fieldName === 'comment'){
       labelElement.style.marginTop  = '10px';
       valueElement.style.padding = '8px';
@@ -340,37 +360,41 @@ function updateContent(formDataArray) {
       switch (mostCommon) {
           case 'Action':
               contentDiv.innerHTML = `
-                  <h1 id="type-title">Welcome to Action Movie Buff's Type Indicator</h1>
-                  <img id="type-image" src="action.jpg" alt="Action" width="500" height="600">
-                  <h3 id="type-description">Enjoy adrenaline-pumping action flicks? Dive into the world of high-octane entertainment!</h3>
+                  <h1 id="type-title">The Action Buff</h1>
+                  <img id="type-image" src="Types/action.jpg" alt="Action" width="500" height="600">
+                  <h3 id="type-description">The Action Buff is a thrill-seeker who thrives on the adrenaline rush provided by high-octane movies and shows. They are drawn to the excitement, intensity, and fast-paced nature of the action genre. For them, watching action-packed scenes filled with heroics, chases, and explosions is not just entertainment; it's an experience that fuels their adventurous spirit and passion for excitement.
+                  </h3>
               `;
               break;
           case 'Romance':
               contentDiv.innerHTML = `
-                  <h1 id="type-title">Welcome to Comedy Movie Buff's Type Indicator</h1>
-                  <img id="type-image" src="comedy.jpg" alt="Comedy" width="500" height="600">
-                  <h3 id="type-description">In for a good laugh? Explore the humorous side of cinema with our comedy selections!</h3>
+                  <h1 id="type-title">The Hopeless Romantic</h1>
+                  <img id="type-image" src="Types/romance.jpg" alt="Romance" width="500" height="600">
+                  <h3 id="type-description">The Hopeless Romantic is someone who is deeply enchanted by the allure of love stories. They are drawn to the emotional depth, heartfelt connections, and the often idealistic portrayal of relationships that the romance genre offers. Watching romantic movies, shows, and reading love stories is more than just entertainment; it's a window into their own dreams and aspirations about love and relationships.
+                  </h3>
               `;
               break;
           case 'Comedy':
             contentDiv.innerHTML = `
-                <h1 id="type-title">Welcome to Romance Movie Buff's Type Indicator</h1>
-                <img id="type-image" src="comedy.jpg" alt="Comedy" width="500" height="600">
-                <h3 id="type-description">In for a good laugh? Explore the humorous side of cinema with our comedy selections!</h3>
+                <h1 id="type-title">The Comedy Enthusiast</h1>
+                <img id="type-image" src="Types/comedy.jpg" alt="Comedy" width="500" height="600">
+                <h3 id="type-description">The Comedy Enthusiast is a person who thrives on laughter and light-hearted entertainment. They have a natural inclination towards humor and often seek out comedy shows, movies, and stand-up performances to brighten their day. Their love for comedy is not just a pastime but a core aspect of their personality, reflecting their optimistic and joyful approach to life.
+                </h3>
             `;
               break;
           case 'Horror':
             contentDiv.innerHTML = `
-                <h1 id="type-title">Welcome to Romance Movie Buff's Type Indicator</h1>
-                <img id="type-image" src="comedy.jpg" alt="Comedy" width="500" height="600">
-                <h3 id="type-description">In for a good laugh? Explore the humorous side of cinema with our comedy selections!</h3>
+                <h1 id="type-title">The Horror Fanatic</h1>
+                <img id="type-image" src="Types/horror.jpg" alt="Horror" width="500" height="600">
+                <h3 id="type-description">The Horror Fanatic is someone who finds excitement and fascination in the spine-chilling and eerie elements of horror stories. They are captivated by the suspense, psychological twists, and supernatural aspects that define the genre. For them, consuming horror media is more than just a thrill; it’s an exploration of fear, human psychology, and the boundaries of reality.</h3>
             `;
               break;
           case 'Adventure':
             contentDiv.innerHTML = `
-                <h1 id="type-title">Welcome to Romance Movie Buff's Type Indicator</h1>
-                <img id="type-image" src="comedy.jpg" alt="Comedy" width="500" height="600">
-                <h3 id="type-description">In for a good laugh? Explore the humorous side of cinema with our comedy selections!</h3>
+                <h1 id="type-title">The Adventure Seeker</h1>
+                <img id="type-image" src="Types/adventure.jpg" alt="Adventure" width="500" height="600">
+                <h3 id="type-description">The Adventure Seeker is a person who thrives on exploration and discovery, captivated by the allure of the unknown and the thrill of new experiences. They are drawn to the adventure genre for its epic quests, exotic locales, and the indomitable spirit of its characters. For them, consuming adventure stories is more than just entertainment; it's a reflection of their inner drive to explore the world and push the boundaries of their own experiences.
+                </h3>
             `;
               break;        
           // Add more cases for other genres as needed
@@ -378,7 +402,7 @@ function updateContent(formDataArray) {
               // If the most common genre doesn't match any specific case, show a generic message
               contentDiv.innerHTML = `
                   <h1 id="type-title">Welcome to Movie Buff's Type Indicator</h1>
-                  <img id="type-image" src="example.jpg" alt="Example" width="500" height="600">
+                  <img id="type-image" src="Types/landing.jpg" alt="Landing Image" width="500" height="600">
                   <h3 id="type-description">Keep adding movies that you've seen, rate them and add a comment. You're movie taste type will be revealed as you go. Have fun!</h3>
               `;
               break;
@@ -387,7 +411,7 @@ function updateContent(formDataArray) {
       // If no genre information is available, show a generic message
       contentDiv.innerHTML = `
           <h1 id="type-title">Welcome to Movie Buff's Type Indicator</h1>
-          <img id="type-image" src="example.jpg" alt="Example" width="500" height="600">
+          <img id="type-image" src="Types/landing.jpg" alt="Landing Image" width="500" height="600">
           <h3 id="type-description">Keep adding movies that you've seen, rate them and add a comment. You're movie taste type will be revealed as you go. Have fun!</h3>
       `;
   }
