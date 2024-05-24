@@ -28,7 +28,7 @@ const movieArray = [
 { name: 'spirited away', image: 'spirited.jpg', director: 'Hayao Miyazaki', year: '2001' }
 ];
 
-// these are the attributes of the movie objects in the array put into const so it can be dynamic
+// These are the attributes of the movie objects in the array put into const so it can be dynamic
 const titleInput = document.getElementById('movie-title');
 const directorInput = document.getElementById('director');
 const yearInput = document.getElementById('year');
@@ -107,14 +107,6 @@ formDataArray.forEach(function(formData, index) {
     labelElement.textContent = `${fieldName}: `;
     fieldElement.appendChild(labelElement);
 
-    // const valueElement = document.createElement('span');
-    // if(fieldName === 'rating') {
-    //   valueElement.textContent = `${fieldValue} out of 5 stars`; // Append "out of 5 stars" to rating
-    // } else {
-    //   valueElement.textContent = Array.isArray(fieldValue) ? fieldValue.join(',  ') : fieldValue;
-    // }
-    // fieldElement.appendChild(valueElement);
-
     const valueElement = document.createElement('span');
     if(fieldName === 'rating') {
       const ratingImage = document.createElement('img');
@@ -169,7 +161,7 @@ formDataArray.forEach(function(formData, index) {
     cardBody.appendChild(fieldElement);
   });
 
-  // Add delete button
+  // Add delete button on each card
   const deleteButton = document.createElement('button');
   deleteButton.textContent = 'Delete';
   deleteButton.classList.add('delete-button');
@@ -226,21 +218,29 @@ form.addEventListener('submit', function(event) {
 
   // Append the new form data to the array
   formDataArray.push(formData);
+  updateContent(formDataArray);
 
   // Store the updated form submissions array back to localStorage
   localStorage.setItem('formSubmissions', JSON.stringify(formDataArray));
 
-  // Clear the form fields after submission
-  function clearForm() {
-    posterImage.src = 'Movies/empty.jpg';
-    stars.forEach(star => star.classList.remove("active"));
-  }
   form.reset();
   clearForm();
 
   // Update the display to show all form submissions
   displayAllFormSubmissions(formDataArray);
 });
+
+// Clear Form when reset button is hit
+const clearButton = document.getElementById('reset-button');
+clearButton.addEventListener('click', function() { 
+  clearForm(); 
+});
+
+  // Clear the form fields after submission
+  function clearForm() {
+    posterImage.src = 'Movies/empty.jpg';
+    stars.forEach(star => star.classList.remove("active"));
+  }
 
 // SORTING THE ARRAY CODE
 

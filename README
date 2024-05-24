@@ -8,6 +8,7 @@ After adding a few in, the code will read what genre you most commonly watch and
 Refresh the page to update this after adding movies.
 Ideally in future I would like to add more conditionals to create more nuanced movie personality types.
 
+* RESPONSIVENESS *
 I designed for Desktop first, as I intend the database to be used following having watched a new movie, with intent to log it in. It is also more common users utilise desktop as their primary movie watching experience due to the large screen size, internet connectivity and overall health benefits related to ergonmics and long term screen usage. (https://www.statista.com/statistics/784383/online-video-devices-in-the-us/#:~:text=Computers%20ranked%20second%20with%20roughly,smartphones%20to%20watch%20online%20videos.)
 
 The secondary mobile layout is designed for the Iphone 14 pro max.
@@ -61,11 +62,23 @@ To view the database based on when content was last submitted. This can be appli
 3. Highest Rating
 This could be applied for users viewing their friend's and family's lists. In sharing their movie interests, knowing their most enjoyed movies is ideal in understanding their taste profile.
 
-
 * DETERMINING TYPE CARD BASED ON PRIMARY GENRE WATCHED *
-
+I created a function that counts every instance a genre is mentioned in the form submissions. I ha to complete it this way because each submission had the possibility of mu
 
 * TYPE CARD ILLUSTRATIONS AND DESCRIPTIONS *
 
 
-* RESPONSIVE TO MOBILE *
+* DESIGN CHANGES *
+I made some design changes from the initial wireframes.
+
+These include:
+- Showing the contents of the card onto the main page instead of a pop up.
+Since the content inputs didn't take much space, it didn't make sense to make the user click through each poster in order to access the information they inputted. By having the card format, the user can explore the ratings and comments more easily.
+
+- Redesigning the add new movie button
+Due to the design implementation above, making the button a seperate element made sense as I didnt want it to consume too much unneccessary space and also, it allowed me to make the button more descriptive instead of just having a symbol to indicate its purpose.
+
+- Mobile layout
+In order to accomodate the changes above and the single page architecture requirement that was outlined in the assignment page, I kept the layout quite similar to the website. The main purpose of having a phone layout for this website is primarily for sharing your taste profile with others, so having the type card take about 75% of the screen with the list being scrollable, it would still serve the function of being able to add movies on the go, although this is not a priority for the mobile layout.
+
+
