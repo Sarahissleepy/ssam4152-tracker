@@ -173,6 +173,7 @@ formDataArray.forEach(function(formData, index) {
     submissionCard.remove();
     // Refresh the display
     displayAllFormSubmissions(formDataArray);
+    updateContent(formDataArray);
   });
   cardBody.appendChild(deleteButton);
 
@@ -236,11 +237,11 @@ clearButton.addEventListener('click', function() {
   clearForm(); 
 });
 
-  // Clear the form fields after submission
-  function clearForm() {
-    posterImage.src = 'Movies/empty.jpg';
-    stars.forEach(star => star.classList.remove("active"));
-  }
+// Clear the form fields after submission
+function clearForm() {
+  posterImage.src = 'Movies/empty.jpg';
+  stars.forEach(star => star.classList.remove("active"));
+}
 
 // SORTING THE ARRAY CODE
 

@@ -1,5 +1,7 @@
 Welcome to my tracker website!!
 
+* INSTRUCTIONS *
+
 To use my website, I implemented an array of set movies that can be used to test the tracker.
 In future, I hope to intergrate an API such as IMDB or othe movie databases, to expand the range of movies and availability for users.
 
@@ -9,7 +11,7 @@ Refresh the page to update this after adding movies.
 Ideally in future I would like to add more conditionals to create more nuanced movie personality types.
 
 * RESPONSIVENESS *
-I designed for Desktop first, as I intend the database to be used following having watched a new movie, with intent to log it in. It is also more common users utilise desktop as their primary movie watching experience due to the large screen size, internet connectivity and overall health benefits related to ergonmics and long term screen usage. (https://www.statista.com/statistics/784383/online-video-devices-in-the-us/#:~:text=Computers%20ranked%20second%20with%20roughly,smartphones%20to%20watch%20online%20videos.)
+I designed for Desktop first (Particularly 1440px × 900px), as I intend the database to be used following having watched a new movie, with intent to log it in. It is also more common users utilise desktop as their primary movie watching experience due to the large screen size, internet connectivity and overall health benefits related to ergonmics and long term screen usage. (https://www.statista.com/statistics/784383/online-video-devices-in-the-us/#:~:text=Computers%20ranked%20second%20with%20roughly,smartphones%20to%20watch%20online%20videos.)
 
 The secondary mobile layout is designed for the Iphone 14 pro max.
 
@@ -34,6 +36,8 @@ I made the pop up in CSS by scratch in order to accommodate the form functions I
 From there users can input the genres they believe the movie best fit under, a score based on theor enjoyment of the movie, and a comment on the movie.
 
 Once this is submitted, it is saved into local storage under formDataArray.
+
+Reset button clears all fields on popUp as accounted by function clearForm.
 
 * STAR RATING *
 I used this source to help me start up the star rating interactive animation, then contributed my own code to make the rating clickable and for it to hold the color once clicked.
@@ -63,10 +67,14 @@ To view the database based on when content was last submitted. This can be appli
 This could be applied for users viewing their friend's and family's lists. In sharing their movie interests, knowing their most enjoyed movies is ideal in understanding their taste profile.
 
 * DETERMINING TYPE CARD BASED ON PRIMARY GENRE WATCHED *
-I created a function that counts every instance a genre is mentioned in the form submissions. I ha to complete it this way because each submission had the possibility of mu
+I created a function that counts every instance a genre is mentioned in the form submissions. I had to complete it this way because each submission had the possibility of multiple genres, hence it could easily skip over genres that were not mentioned first for that object. I acknowledge that there are a lot more than five genre in the world of movies and film although in the circumstance of the assignment, I chose to limit this number due to the limitations of the movie array beng unable to fully demonstrate a longer list of genres.
+
+Despite this, I still believe my websites fully demostrates what I wanted it to in the terms of a shareable personality type movie database as something that is fun and helpful in an environment where watching movies with friends and family often becomes a stressful task given that streaming sites like Netflix and Stan overwhelm us with choice. It give opprtunity to share what you have watched, your taste and also strike up conversation about your watching habits.
 
 * TYPE CARD ILLUSTRATIONS AND DESCRIPTIONS *
+The type cards correspond to the highest amount of instances a genre appears within the array. Each type comes with a title, illustration and description highlighting some traits that align with the average watcher of that genre.
 
+I digitally drew the illustrations in Procreate (popular art app on iPad).
 
 * DESIGN CHANGES *
 I made some design changes from the initial wireframes.
@@ -82,3 +90,5 @@ Due to the design implementation above, making the button a seperate element mad
 In order to accomodate the changes above and the single page architecture requirement that was outlined in the assignment page, I kept the layout quite similar to the website. The main purpose of having a phone layout for this website is primarily for sharing your taste profile with others, so having the type card take about 75% of the screen with the list being scrollable, it would still serve the function of being able to add movies on the go, although this is not a priority for the mobile layout.
 
 
+PS.
+Lots of gratitude to the contributors at MDN Web Docs and W3Schools. This code simply will not exist without them. 
