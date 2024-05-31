@@ -1,5 +1,8 @@
 Welcome to my tracker website!!
 
+Github Repo Link: https://github.com/Sarahissleepy/ssam4152-tracker
+Website Link: https://sarahissleepy.github.io/ssam4152-tracker/ 
+
 * INSTRUCTIONS *
 
 To use my website, I implemented an array of set movies that can be used to test the tracker.
@@ -89,6 +92,14 @@ Due to the design implementation above, making the button a seperate element mad
 - Mobile layout
 In order to accomodate the changes above and the single page architecture requirement that was outlined in the assignment page, I kept the layout quite similar to the website. The main purpose of having a phone layout for this website is primarily for sharing your taste profile with others, so having the type card take about 75% of the screen with the list being scrollable, it would still serve the function of being able to add movies on the go, although this is not a priority for the mobile layout.
 
+* AI USAGE ACKNOWLEDGEMENTS *
+I used ChaptGPT to help generate the type descriptions, some css suggestions and also assist with debugging the sort code function and pop up function.
+The prompts I used were:
+- "Can you write a description for a personality type that watches lots of comedy?"
+- "Could you look at this code and show me why its not working? (Insert code snippet)"
+- "Why isnt the closeBtn button showing up? (Insert code snippet)"
+- "How do I create an background overlay for a pop up on a website?"
+- "How do i make the content in the listHead div stack vertically?"
 
 PS.
 Lots of gratitude to the contributors at MDN Web Docs and W3Schools. This code simply will not exist without them. 
