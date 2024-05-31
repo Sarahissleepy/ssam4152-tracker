@@ -5,7 +5,7 @@ body {
 
 .container {  display: grid;
   grid-template-columns: 0.1fr 2.8fr 0.1fr;
-  grid-template-rows: 20px 500px 20px 100px 1.9fr 40px 20px;
+  grid-template-rows: 20px 500px 30px 100px 1.9fr 40px 20px;
   grid-auto-columns: 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
@@ -165,7 +165,7 @@ body {
 
 .typeCard { 
   grid-area: 2 / 2 / 3 / 3; 
-  background-image: linear-gradient( #e7f9ff 20%, #ffe8f3 100%);
+  background-image: linear-gradient( #e7f9ff 20%, #FFC6C6 100%);
   border-radius: 5px;
   text-align: center;
   position: relative;

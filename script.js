@@ -394,7 +394,7 @@ function updateContent(formDataArray) {
             contentDiv.innerHTML = `
                 <h1 id="type-title">The Adventure Seeker</h1>
                 <img id="type-image" src="Types/adventure.jpg" alt="Adventure" width="500" height="600">
-                <h3 id="type-description">The Adventure Seeker is a person who thrives on exploration and discovery, captivated by the allure of the unknown and the thrill of new experiences. They are drawn to the adventure genre for its epic quests, exotic locales, and the indomitable spirit of its characters. For them, consuming adventure stories is more than just entertainment; it's a reflection of their inner drive to explore the world and push the boundaries of their own experiences.
+                <h3 id="type-description">The Adventure Seeker is a person who thrives on exploration and discovery, captivated by the allure of the unknown and the thrill of new experiences. They are drawn to the adventure genre for its epic quests and the fiery spirit of its characters. For them, consuming adventure stories is more than just entertainment; it's a reflection of their inner drive to explore the world.
                 </h3>
             `;
               break;        
@@ -413,7 +413,7 @@ function updateContent(formDataArray) {
       contentDiv.innerHTML = `
           <h1 id="type-title">Welcome to Movie Buff's Type Indicator</h1>
           <img id="type-image" src="Types/landing.jpg" alt="Landing Image" width="500" height="600">
-          <h3 id="type-description">Keep adding movies that you've seen, rate them and add a comment. You're movie taste type will be revealed as you go. Have fun!</h3>
+          <h3 id="type-description">Keep adding movies that you have seen, rate them and add a comment. Your movie taste type will be revealed as you go. Have fun!</h3>
       `;
   }
 }
